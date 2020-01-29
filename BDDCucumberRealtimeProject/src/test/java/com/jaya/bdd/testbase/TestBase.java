@@ -45,6 +45,10 @@ public class TestBase {
 	}
 
 	public static WebDriver getDriverInstance() {
+		settings = new GlobalSettings();
+		settings.readGlobalSettings("./res/config/GlobalSettings.properties");
+		System.out.println(" Peroperty value from file : " + settings.properties.getProperty("AppURL"));
+		runMode = settings.properties.getProperty("RunMode");
 
 		if (driver == null) {
 			if (runMode.equalsIgnoreCase("Local")) {
